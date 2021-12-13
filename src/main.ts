@@ -48,6 +48,7 @@ async function run() {
     if(autoMerge) {
         await octokit.pulls.merge({ owner: context.repo.owner, repo, pull_number: pr.data.number, merge_method: mergeMethod });
     }
+    core.setOutput('changes_applied', new Boolean(true))
   } catch (error: any) {
     if (error.request.request.retryCount) {
       console.log(
@@ -64,6 +65,7 @@ async function run() {
         core.setFailed(`Failed to create or merge pull request: ${error ?? "[n/a]"}`);
       }
     }
+    core.setOutput('changes_applied', new Boolean(false))
   }
 }
 

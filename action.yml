@@ -52,8 +52,8 @@ inputs:
     required: false
     default: 60
 outputs:
-  changes_present: # id of the output
-    description: 'Whether there are changes present that were merged in (true), or not (false)'
+  changes_applied: # id of the output
+    description: 'Whether there are changes that were merged in (true), or not (false)'
 runs:
   using: 'node12'
   main: 'lib/main.js'
